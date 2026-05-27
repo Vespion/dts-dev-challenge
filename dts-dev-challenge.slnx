@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Directory.build.props" />
+    <File Path="dotnet-tools.json" />
+  </Folder>
+  <Folder Name="/Support/">
+    <Project Path="dts-dev-challenge.AppHost/dts-dev-challenge.AppHost.csproj" />
+    <Project Path="dts-dev-challenge.ServiceDefaults/dts-dev-challenge.ServiceDefaults.csproj" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="tests/Backend.Tests/Backend.Tests.csproj" />
+  </Folder>
+  <Project Path="Backend/Backend.csproj" />
+  <Project Path="Common/Common.csproj" />
+  <Project Path="WebMvc/WebMvc.csproj" />
+</Solution>

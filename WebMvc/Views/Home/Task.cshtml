@@ -1,0 +1,78 @@
+﻿@using DtsDevChallenge.Common
+@model DtsDevChallenge.Common.TaskItem
+
+<form method="post">
+    <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                <label>Id</label>
+            </dt>
+            <dd class="govuk-summary-list__value">
+                @if (Model.Id == 0)
+                {
+                    <p>Will be assigned on save</p>
+                }
+                else
+                {
+                    @Model.Id
+                }
+            </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                <label>Title</label>
+            </dt>
+            <dd class="govuk-summary-list__value">
+                <input class="govuk-input" asp-for="Title" type="text" value="@Model.Title" required>
+            </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                Status
+            </dt>
+            <dd class="govuk-summary-list__value">
+                <select class="govuk-select" asp-for="ItemStatus"
+                        asp-items="Enum.GetValues<TaskItemStatus>().Where(x => x != TaskItemStatus.Unknown)
+                            .Select(status => new SelectListItem{Value = status.ToString(), Text = status.ToString(), Selected = status == Model.ItemStatus})"></select>
+            </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                Due By
+            </dt>
+            <dd class="govuk-summary-list__value">
+                <input class="govuk-input" asp-for="DueBy"
+                       type="datetime-local"
+                       min="@DateTimeOffset.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm")"
+                       value="@((Model.DueBy == default ? DateTimeOffset.Now : Model.DueBy).ToLocalTime().ToString("yyyy-MM-ddTHH:mm"))"
+                />
+            </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                Description
+            </dt>
+            <dd class="govuk-summary-list__value">
+                <textarea class="govuk-textarea" asp-for="Description" rows="5" value="@Model.Description"></textarea>
+            </dd>
+        </div>
+    </dl>
+
+    <div class="govuk-button-group">
+        @if (Model.Id == 0)
+        {
+            <button class="govuk-button" data-module="govuk-button" asp-controller="Home" asp-action="TaskCreate">Save
+            </button>
+        }
+        else
+        {
+            <button class="govuk-button" data-module="govuk-button" asp-controller="Home" asp-action="TaskUpdate"
+                    asp-route-id="@Model.Id">Save
+            </button>
+            <button class="govuk-button govuk-button--warning" data-module="govuk-button" asp-controller="Home"
+                    asp-action="TaskDelete" asp-route-id="@Model.Id">Delete
+            </button>
+        }
+        <a class="govuk-link" asp-controller="Home" asp-action="Index">Back to task list</a>
+    </div>
+</form>

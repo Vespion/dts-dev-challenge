@@ -1,0 +1,11 @@
+@Backend_HostAddress = http://localhost:5014
+
+GET {{Backend_HostAddress}}/tasks/
+Accept: application/json
+
+###
+
+GET {{Backend_HostAddress}}/tasks/1
+Accept: application/json
+
+###

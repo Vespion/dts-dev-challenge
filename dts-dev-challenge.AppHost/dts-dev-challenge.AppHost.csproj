@@ -1,0 +1,22 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.3.5">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <UserSecretsId>0beef1ce-e8eb-4ed9-bfba-2e6a9a6ebc70</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Backend\Backend.csproj" />
+      <ProjectReference Include="..\WebMvc\WebMvc.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Aspire.Hosting.Docker" Version="13.3.5" />
+      <PackageReference Include="Aspire.Hosting.JavaScript" Version="13.3.5" />
+      <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="13.3.5" />
+    </ItemGroup>
+
+</Project>

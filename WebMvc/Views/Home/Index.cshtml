@@ -1,0 +1,53 @@
+﻿@using DtsDevChallenge.Common
+@model DtsDevChallenge.Common.TaskItem[]
+
+
+<a type="submit" class="govuk-button" data-module="govuk-button" asp-action="TaskCreate">
+    Add new task
+</a>
+
+@if (Model is { Length: > 0 })
+{
+    <ul class="govuk-task-list">
+        @foreach (var taskItem in Model)
+        {
+            <li class="govuk-task-list__item govuk-task-list__item--with-link">
+                <div class="govuk-task-list__name-and-hint">
+                    <a
+                        class="govuk-link govuk-task-list__link"
+                        aria-describedby="task-@taskItem.Id-status"
+                        style="cursor: pointer"
+                        asp-action="Task"
+                        asp-route-id="@taskItem.Id">
+                        #@taskItem.Id - @taskItem.Title (click to edit)
+                    </a>
+                    <div class="govuk-task-list__hint">
+                        @taskItem.Description
+                    </div>
+                </div>
+                <div class="govuk-task-list__status">
+                    <strong class="govuk-tag @(taskItem.ItemStatus switch
+                                             {
+                                                 TaskItemStatus.Unknown => "govuk-tag--purple",
+                                                 TaskItemStatus.Active => "govuk-tag--green",
+                                                 TaskItemStatus.Paused => "govuk-tag--yellow",
+                                                 _ => "govuk-tag--grey"
+                                             })">
+                        @taskItem.ItemStatus
+                    </strong>
+                </div>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">
+            Tasks complete
+        </h1>
+        <div class="govuk-panel__body">
+            You do not currently have any tasks to complete.
+        </div>
+    </div>
+}
