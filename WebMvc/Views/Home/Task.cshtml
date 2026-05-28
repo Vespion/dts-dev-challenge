@@ -70,7 +70,7 @@
                     asp-route-id="@Model.Id">Save
             </button>
             <button class="govuk-button govuk-button--warning" data-module="govuk-button" asp-controller="Home"
-                    asp-action="TaskDelete" asp-route-id="@Model.Id">Delete
+                    asp-action="TaskDelete" asp-route-id="@Model.Id" formnovalidate>Delete
             </button>
         }
         <a class="govuk-link" asp-controller="Home" asp-action="Index">Back to task list</a>
