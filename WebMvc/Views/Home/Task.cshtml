@@ -43,7 +43,7 @@
             <dd class="govuk-summary-list__value">
                 <input class="govuk-input" asp-for="DueBy"
                        type="datetime-local"
-                       min="@DateTimeOffset.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm")"
+                       min="@DateTimeOffset.Now.Subtract(TimeSpan.FromDays(1)).LocalDateTime.Date.ToString("yyyy-MM-ddTHH:mm")"
                        value="@((Model.DueBy == default ? DateTimeOffset.Now : Model.DueBy).ToLocalTime().ToString("yyyy-MM-ddTHH:mm"))"
                 />
             </dd>
