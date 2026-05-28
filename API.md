@@ -1,19 +1,3 @@
----
-title: Backend | v1 v1.0.0
-language_tabs:
-  - shell: Curl
-  - http: HTTP
-language_clients:
-  - shell: ""
-  - http: ""
-toc_footers: []
-includes: []
-search: true
-highlight_theme: darkula
-headingLevel: 2
-
----
-
 <!-- Generator: Widdershins v4.0.1 -->
 
 <h1 id="backend-v1">Backend | v1 v1.0.0</h1>
